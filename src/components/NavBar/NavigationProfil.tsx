@@ -9,7 +9,7 @@ export const NavigationProfil = ({ countFavorite }: INavigationProfilProps) => {
             <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="btn btn-ghost btn-circle avatar hover:scale-105 active:scale-95"
             >
                 <div className="w-10 rounded-full border-2 border-primary">
                     <img

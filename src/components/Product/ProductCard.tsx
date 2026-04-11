@@ -26,7 +26,9 @@ export const ProductCard = ({ product, favoriteList, addToCartList, addToFavorit
                     />
                     <button 
                         onClick={() => addToFavoriteList(product)} 
-                        className="btn btn-circle btn-ghost absolute top-2 right-2 bg-white backdrop-blur-sm border-none active:scale-90"
+                        className="btn btn-circle btn-ghost tooltip tooltip-primary tooltip-left absolute top-2 right-2 bg-white backdrop-blur-sm border-none active:scale-90"
+                        data-tip="Add to favorites"
+
                     >             
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +53,7 @@ export const ProductCard = ({ product, favoriteList, addToCartList, addToFavorit
                     </div>
                     <p className="line-clamp-3">{product.description}</p>
                     <div className="card-actions justify-end mt-3">
-                        <button onClick={() => addToCartList(product)} className="btn btn-ghost text-xl text-white"><FaCartPlus size={30} style={{margin: 10}}/></button>
+                        <button onClick={() => addToCartList(product)} className="btn btn-ghost text-xl text-white active:scale-90"><FaCartPlus size={30} style={{margin: 10}}/></button>
                     </div>
                 </div>
             </div>

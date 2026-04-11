@@ -2,12 +2,11 @@ import type { IProduct } from "@/interfaces/products";
 import { NavigationCart, NavigationProfil } from "@components";
 
 interface INavigationBarProps {
-    countItem: number;
     countFavorite: number;
     cardList: IProduct[]
 }
 
-export const NavigationBar = ({ countItem, countFavorite, cardList }: INavigationBarProps) => {
+export const NavigationBar = ({ countFavorite, cardList }: INavigationBarProps) => {
     
     return (
         <>
@@ -19,7 +18,7 @@ export const NavigationBar = ({ countItem, countFavorite, cardList }: INavigatio
                         </a>
                     </div>
                     <div className="flex gap-4">
-                        <NavigationCart countItem={countItem} cardList={cardList}/>
+                        <NavigationCart cardList={cardList}/>
                         <NavigationProfil countFavorite={countFavorite}/>
                     </div>
                 </div>

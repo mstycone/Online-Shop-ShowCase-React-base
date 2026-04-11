@@ -10,7 +10,20 @@ function App() {
   const [cardList, setCardList] = useState<IProduct[]>([]);
 
   const addToCardList = (product: IProduct) => {
-    setCardList([...cardList, product]);
+    const isAlreadyInCart = cardList.find((item) => item.id === product.id)
+
+    if (!isAlreadyInCart) {
+      const newProduct = {...product, quantity: 1}
+      setCardList([...cardList, newProduct]);
+    } else {
+      setCardList(cardList.map((item) => {
+        item = (item.id === product.id)
+         ? {...item, quantity: (item.quantity || 0) + 1 }
+         : item
+         ;
+         return item;
+      }));
+    }
     return cardList;
   }
 
@@ -28,8 +41,7 @@ function App() {
 
   return (
     <>
-      <NavigationBar 
-        countItem={cardList.length} 
+      <NavigationBar
         countFavorite={favoriteList.length}
         cardList={cardList}
       />
