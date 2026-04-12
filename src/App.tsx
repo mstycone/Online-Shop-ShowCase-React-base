@@ -9,8 +9,8 @@ const App = () => {
   //State pour la liste des produits dans le panier
   const [cardList, setCardList] = useState<IProduct[]>([]);
 
-  const isOnTheList = (list: IProduct[], product:IProduct): boolean => { 
-    return (list.find((item) => item.id === product.id)) ? true : false  
+  const isOnTheList = (list: IProduct[], product:IProduct): IProduct | undefined => { 
+    return (list.find((item) => item.id === product.id)) ? product : undefined;  
   };
 
   const addToCardList = (product: IProduct) => {
@@ -31,13 +31,25 @@ const App = () => {
   }
 
   const removeFromCardList = (product: IProduct) => {
+    const productInCart = isOnTheList(cardList, product);
 
+    const alertMessage: string = 
+      (productInCart && productInCart.quantity) ?
+       (productInCart.quantity > 1) 
+        ? "There is more than one of this item in your cart. Would you like to remove them all?"
+        : "Are you sure you want to remove this item from your cart?"
+      : "This item is not in your cart."
+    ;
+
+    alert(alertMessage);
+    setCardList(cardList.filter((item) => item.id !== product.id));
+    return cardList;
   }
 
   //State pour ajouter et/ou retirer de la liste de favoris
   const [favoriteList, setFavoriteList] = useState<IProduct[]>([]);
 
-  const addToFavoriteList = (product: IProduct) => {
+  const toggleFavorite = (product: IProduct) => {
     if (!isOnTheList(favoriteList, product)) {
       setFavoriteList([...favoriteList, product]);
     } else {
@@ -62,7 +74,7 @@ const App = () => {
             product={product}
             favoriteList={favoriteList}
             addToCartList={() => addToCardList(product)}
-            addToFavoriteList={() => addToFavoriteList(product)}
+            addToFavoriteList={() => toggleFavorite(product)}
           />
         ))}
       </div>
