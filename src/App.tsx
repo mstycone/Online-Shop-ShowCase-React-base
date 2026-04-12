@@ -4,15 +4,18 @@ import type { IProduct } from '@interfaces/products';
 import { useState } from 'react';
 
 
-function App() {
+const App = () => {
 
   //State pour la liste des produits dans le panier
   const [cardList, setCardList] = useState<IProduct[]>([]);
 
-  const addToCardList = (product: IProduct) => {
-    const isAlreadyInCart = cardList.find((item) => item.id === product.id)
+  const isOnTheList = (list: IProduct[], product:IProduct): boolean => { 
+    return (list.find((item) => item.id === product.id)) ? true : false  
+  };
 
-    if (!isAlreadyInCart) {
+  const addToCardList = (product: IProduct) => {
+
+    if (!isOnTheList(cardList, product)) {
       const newProduct = {...product, quantity: 1}
       setCardList([...cardList, newProduct]);
     } else {
@@ -27,17 +30,24 @@ function App() {
     return cardList;
   }
 
+  const removeFromCardList = (product: IProduct) => {
+
+  }
+
   //State pour ajouter et/ou retirer de la liste de favoris
   const [favoriteList, setFavoriteList] = useState<IProduct[]>([]);
 
   const addToFavoriteList = (product: IProduct) => {
-    if (!favoriteList.includes(product)) {
+    if (!isOnTheList(favoriteList, product)) {
       setFavoriteList([...favoriteList, product]);
     } else {
       setFavoriteList(favoriteList.filter((item) => item.id !== product.id));
     }
     return favoriteList;
   }
+
+  console.log("Favorite List: ", favoriteList);
+  console.log("Card List: ", cardList);
 
   return (
     <>
