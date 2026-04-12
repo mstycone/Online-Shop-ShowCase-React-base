@@ -4,10 +4,12 @@ import { FaCartShopping } from "react-icons/fa6";
 
 interface INavigationCartProps {
     cardList: IProduct[];
+    removeFromCartList: (product: IProduct) => IProduct[];
 }
 
 export const NavigationCart = ({
     cardList,
+    removeFromCartList,
 }: INavigationCartProps) => {
 
     const totalItemInCart = cardList.reduce((total, item) => total + (item.quantity || 0), 0);
@@ -54,6 +56,7 @@ export const NavigationCart = ({
                                                     <ProductCartList
                                                         key={product.id}
                                                         product={product}
+                                                        removeFromCartList={removeFromCartList}
                                                     />
                                                 ))
                                             ) : ("Your cart is empty")

@@ -5,9 +5,10 @@ import { FaTrashCan } from "react-icons/fa6";
 
 interface IProductCartListProps {
     product: IProduct;
+    removeFromCartList: (product: IProduct) => IProduct[];
 }
 
-export const ProductCartList = ({ product }: IProductCartListProps) => {
+export const ProductCartList = ({ product, removeFromCartList }: IProductCartListProps) => {
 
 
     return (
@@ -39,7 +40,10 @@ export const ProductCartList = ({ product }: IProductCartListProps) => {
                 </div>
             </div>
             <div className="bg-transparent">
-                <button className="btn btn-square btn-ghost btn-sm hover:scale-120 active:scale-90">
+                <button 
+                    onClick={()=>removeFromCartList(product)} 
+                    className="btn btn-square btn-ghost btn-sm hover:scale-120 active:scale-90"
+                >
                     <FaTrashCan size={15} className="text-white/30" />
                 </button>
             </div>

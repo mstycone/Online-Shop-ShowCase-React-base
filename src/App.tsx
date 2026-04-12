@@ -66,6 +66,7 @@ const App = () => {
       <NavigationBar
         countFavorite={favoriteList.length}
         cardList={cardList}
+        removeFromCartList={removeFromCardList}
       />
       <div className="flex flex-wrap justify-center gap-10 mb-40">
         {products.map((product: IProduct) => (

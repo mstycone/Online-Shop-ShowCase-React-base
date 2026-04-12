@@ -3,10 +3,11 @@ import { NavigationCart, NavigationProfil } from "@components";
 
 interface INavigationBarProps {
     countFavorite: number;
-    cardList: IProduct[]
+    cardList: IProduct[];
+    removeFromCartList: (product: IProduct) => IProduct[];
 }
 
-export const NavigationBar = ({ countFavorite, cardList }: INavigationBarProps) => {
+export const NavigationBar = ({ countFavorite, cardList,removeFromCartList }: INavigationBarProps) => {
     
     return (
         <>
@@ -18,7 +19,7 @@ export const NavigationBar = ({ countFavorite, cardList }: INavigationBarProps) 
                         </a>
                     </div>
                     <div className="flex gap-4">
-                        <NavigationCart cardList={cardList}/>
+                        <NavigationCart cardList={cardList} removeFromCartList={removeFromCartList}/>
                         <NavigationProfil countFavorite={countFavorite}/>
                     </div>
                 </div>
