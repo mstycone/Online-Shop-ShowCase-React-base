@@ -3,19 +3,22 @@ import { ProductCartList } from "../Product/ProductCartList";
 import { FaCartShopping } from "react-icons/fa6";
 
 interface INavigationCartProps {
-    cardList: IProduct[];
-    removeFromCartList: (product: IProduct) => IProduct[];
+    cartList: IProduct[];
+    removeFromCartList: (product: IProduct) => void;
+    decrementProductQuantity: (product: IProduct) => void;
 }
 
 export const NavigationCart = ({
-    cardList,
+    cartList,
     removeFromCartList,
+    decrementProductQuantity
+
 }: INavigationCartProps) => {
 
-    const totalItemInCart = cardList.reduce((total, item) => total + (item.quantity || 0), 0);
-    const totalPrice = cardList.reduce((total, item) => total + (item.price * (item.quantity || 0)), 0);
-    const scrollBarON = cardList.length > 3 ? "overflow-y-scroll scrollbar-thin" : "";
-    const isCartEmpty = cardList.length === 0 ? "" : "scroll-smooth min-h-100 max-h-110";
+    const totalItemInCart = cartList.reduce((total, item) => total + (item.quantity || 0), 0);
+    const totalPrice = cartList.reduce((total, item) => total + (item.price * (item.quantity || 0)), 0);
+    const scrollBarON = cartList.length > 3 ? "overflow-y-scroll scrollbar-thin" : "";
+    const isCartEmpty = cartList.length === 0 ? "" : "scroll-smooth min-h-100 max-h-110";
 
     return (
         <div className="dropdown dropdown-end">
@@ -51,12 +54,13 @@ export const NavigationCart = ({
                                 <div className={scrollBarON + isCartEmpty}>
                                     <ul className="menu menu-sm bg-base-100 rounded-box mt-2 w-full">
                                         {
-                                            cardList.length > 0 ? (
-                                                cardList.map((product) => (
+                                            cartList.length > 0 ? (
+                                                cartList.map((product) => (
                                                     <ProductCartList
                                                         key={product.id}
                                                         product={product}
                                                         removeFromCartList={removeFromCartList}
+                                                        decrementProductQuantity={decrementProductQuantity}
                                                     />
                                                 ))
                                             ) : ("Your cart is empty")

@@ -5,16 +5,23 @@ import { FaTrashCan } from "react-icons/fa6";
 
 interface IProductCartListProps {
     product: IProduct;
-    removeFromCartList: (product: IProduct) => IProduct[];
+    removeFromCartList: (product: IProduct) => void;
+    decrementProductQuantity: (product: IProduct) => void;
 }
 
-export const ProductCartList = ({ product, removeFromCartList }: IProductCartListProps) => {
+export const ProductCartList = ({ 
+    product, 
+    removeFromCartList, 
+    decrementProductQuantity 
 
-
+}: IProductCartListProps ) => {
     return (
         <li className="list-row relative flex justify-between my-1.5 items-center">
             <div className="absolute top-0 right-0 bg-transparent">
-                <button className="btn btn-square btn-ghost btn-xs bg-transparent hover:scale-120 active:scale-90">
+                <button 
+                    onClick={() => decrementProductQuantity(product)}
+                    className="btn btn-square btn-ghost btn-xs bg-transparent hover:scale-120 active:scale-90"
+                >
                     <BsCartDash size={15} className="text-white" />
                 </button>
             </div>

@@ -5,8 +5,8 @@ import { FaCartPlus } from "react-icons/fa6";
 interface IProductCardProps {
     product: IProduct;
     favoriteList: IProduct[];
-    addToCartList: (product: IProduct) => IProduct[];
-    addToFavoriteList: (product: IProduct) => IProduct[];
+    addToCartList: (product: IProduct) => void;
+    addToFavoriteList: (product: IProduct) => void;
 }
 
 export const ProductCard = ({ product, favoriteList, addToCartList, addToFavoriteList }: IProductCardProps) => {

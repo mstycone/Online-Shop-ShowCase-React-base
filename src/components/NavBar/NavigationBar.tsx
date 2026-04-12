@@ -3,12 +3,18 @@ import { NavigationCart, NavigationProfil } from "@components";
 
 interface INavigationBarProps {
     countFavorite: number;
-    cardList: IProduct[];
-    removeFromCartList: (product: IProduct) => IProduct[];
+    cartList: IProduct[];
+    removeFromCartList: (product: IProduct) => void;
+    decrementProductQuantity: (product: IProduct) => void;
 }
 
-export const NavigationBar = ({ countFavorite, cardList,removeFromCartList }: INavigationBarProps) => {
-    
+export const NavigationBar = ({ 
+    countFavorite, 
+    cartList,
+    removeFromCartList,
+    decrementProductQuantity
+
+ }: INavigationBarProps) => {
     return (
         <>
             <div className="w-full max-w-7xl mx-auto mt-1 mb-8 px-2">
@@ -19,7 +25,11 @@ export const NavigationBar = ({ countFavorite, cardList,removeFromCartList }: IN
                         </a>
                     </div>
                     <div className="flex gap-4">
-                        <NavigationCart cardList={cardList} removeFromCartList={removeFromCartList}/>
+                        <NavigationCart 
+                            cartList={cartList} 
+                            removeFromCartList={removeFromCartList}
+                            decrementProductQuantity={decrementProductQuantity}
+                        />
                         <NavigationProfil countFavorite={countFavorite}/>
                     </div>
                 </div>
