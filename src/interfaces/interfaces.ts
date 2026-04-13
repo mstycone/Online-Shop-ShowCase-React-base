@@ -29,30 +29,26 @@ export interface IProductListProps {
   productDB?: IProduct[]
 }
 
-export interface IProductCartListProps {
-  product: IProduct;
+export interface IProductCartListProps extends Pick<IProductProps, 'product'>{
   removeFromCartList: (product: IProduct) => void;
   decrementProductQuantity: (product: IProduct) => void
 }
 
-export interface IProductImageProps {
-  product: IProduct;
+export interface IProductImageProps extends Pick<IProductProps, 'product'>{
   className: string
 }
 
-export interface INavigationProps {
+export interface INavigationCartProps extends Omit<IProductCartListProps, 'product'> {
   cartList: IProduct[];
-  removeFromCartList: (product: IProduct) => void;
-  decrementProductQuantity: (product: IProduct) => void;
-  countFavorite: number
 }
-
-export interface INavigationCartProps {
-  cartList: IProduct[];
-  removeFromCartList: (product: IProduct) => void;
-  decrementProductQuantity: (product: IProduct) => void
-}
-
 export interface INavigationProfileProps {
   countFavorite: number
 }
+
+export interface INavigationProps extends INavigationCartProps, INavigationProfileProps {}
+
+export interface IPageTitleProps {
+  pageTitle: string
+}
+
+export interface IStandardPageProps extends IProductListProps, IPageTitleProps {}

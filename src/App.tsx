@@ -34,6 +34,7 @@ export default function App() {
               isFavoritesPage={false}
               productList={favoriteList}
               productDB={products}
+              pageTitle="Home"
             />
           }
         />
@@ -47,6 +48,7 @@ export default function App() {
               isFavoritesPage={false}
               productList={favoriteList}
               productDB={cartList}
+              pageTitle="Your Cart"
             />
           }
         />
@@ -59,6 +61,7 @@ export default function App() {
               emptyListMessage="You have no Favorites Yet"
               isFavoritesPage={true}
               productList={favoriteList}
+              pageTitle="Your Favorites"
             />
           }
         />

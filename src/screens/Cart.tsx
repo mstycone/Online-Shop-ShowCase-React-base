@@ -1,5 +1,5 @@
-import type { IProductListProps } from '@interfaces/interfaces';
-import { ProductList } from '@components';
+import type { IStandardPageProps } from '@interfaces/interfaces';
+import { PageTitle, ProductList } from '@components';
 
 
 export const Cart = ({
@@ -8,14 +8,15 @@ export const Cart = ({
   emptyListMessage,
   isFavoritesPage,
   productList, 
-  productDB
-}: IProductListProps) => {
+  productDB,
+  pageTitle
+}: IStandardPageProps) => {
 
   return (
     <div className="px-8 py-1">
-      <h1 className="text-3xl font-bold mb-20 text-left">
-        Your Cart
-      </h1>
+      <PageTitle
+        pageTitle={pageTitle}
+      />
     
       <ProductList
         addToCartList={addToCartList}

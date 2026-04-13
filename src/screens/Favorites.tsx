@@ -1,5 +1,5 @@
-import type { IProductListProps } from '@interfaces/interfaces';
-import { ProductList } from '@components';
+import { PageTitle, ProductList } from '@components';
+import type { IStandardPageProps } from '@interfaces/interfaces';
 
 
 export const Favorites = ({
@@ -7,14 +7,15 @@ export const Favorites = ({
     toggleFavorite,
     emptyListMessage,
     isFavoritesPage,
-    productList
-}: IProductListProps) => {
+    productList,
+    pageTitle
+  }: IStandardPageProps) => {
 
   return (
     <div className="px-8 py-1">
-      <h1 className="text-3xl font-bold mb-20 text-left">
-        Your Favorites
-      </h1>
+      <PageTitle
+        pageTitle={pageTitle}
+      />
 
       <ProductList
         addToCartList={addToCartList}
