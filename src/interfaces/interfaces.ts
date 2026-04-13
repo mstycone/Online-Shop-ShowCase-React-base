@@ -38,7 +38,7 @@ export interface IProductImageProps extends Pick<IProductProps, 'product'>{
   className: string
 }
 
-export interface INavigationCartProps extends Omit<IProductCartListProps, 'product'> {
+export interface INavigationCartProps extends Omit<IProductCartListProps, 'product'>{
   cartList: IProduct[];
 }
 export interface INavigationProfileProps {

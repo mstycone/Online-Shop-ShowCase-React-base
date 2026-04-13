@@ -1,7 +1,7 @@
-export { Cart } from "./Cart";
-export { Home } from "./Home";
-export { SignIn } from "./SignIn";
-export { SignUp } from "./SignUp";
-export { Settings } from "./Settings";
-export { Favorites } from "./Favorites";
-export { Profile } from "./Profile";
+export { Cart } from "./screens/Cart";
+export { Home } from "./screens/Home";
+export { SignIn } from "./screens/SignIn";
+export { SignUp } from "./screens/SignUp";
+export { Settings } from "./screens/Settings";
+export { Favorites } from "./screens/Favorites";
+export { Profile } from "./screens/Profile";
