@@ -23,7 +23,9 @@
       "@components": ["./src/components/index.ts"],
       "@components/*": ["./src/components/*"],
       "@interfaces/*": ["./src/interfaces/*"],
-      "@data/*": ["./src/data/*"]
+      "@data/*": ["./src/data/*"],
+      "@screens": ["./src/screens/index.ts"],
+      "@screens/*": ["./src/screens/*"]
     },
 
     /* Linting */

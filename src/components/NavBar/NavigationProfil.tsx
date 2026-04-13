@@ -30,7 +30,7 @@ export const NavigationProfil = ({ countFavorite }: INavigationProfilProps) => {
                 </li>
                 <li>
                     <a className="justify-between">
-                        Favoris{" "}
+                        Favorites{" "}
                         {countFavorite > 99 ? "(99+)" : `(${countFavorite})`}
                         <span className="badge">
                             <svg
