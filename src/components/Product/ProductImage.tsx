@@ -1,12 +1,7 @@
+import type { IProductImageProps } from "@interfaces/interfaces";
 
-import type { IProduct } from "@interfaces/products";
 
-interface IProductImage {
-    product: IProduct;
-    className: string;
-}
-
-export const ProductImage = ({ product, className }: IProductImage) => {
+export const ProductImage = ({ product, className }: IProductImageProps) => {
   return (
       <img
           src={"https://fakestoreapi.com/img" + product.image}

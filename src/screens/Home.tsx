@@ -18,8 +18,8 @@ export const Home = () => {
             key={product.id} 
             product={product}
             favoriteList={favoriteList}
-            addToCartList={() => addTocartList(product)}
-            addToFavoriteList={() => toggleFavorite(product)}
+            addToCartList={addTocartList}
+            addToFavoriteList={toggleFavorite}
           />
         ))}
       </div>

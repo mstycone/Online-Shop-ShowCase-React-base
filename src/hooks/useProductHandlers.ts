@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import type { IProduct } from "@interfaces/products";
+import type { IProduct } from "@/interfaces/interfaces";
 
 export function useProductHandlers() {
 
@@ -19,7 +19,7 @@ export function useProductHandlers() {
               item = (item.id === product.id)
                 ? {...item, quantity: (item.quantity || 0) + 1 }
                 : item
-              ;
+
               return item;
             })
           )
@@ -85,6 +85,7 @@ export function useProductHandlers() {
         setFavoriteList(isFavorite);
         return favoriteList;
     }
+
     return {
         cartList,
         setCartList,

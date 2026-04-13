@@ -1,19 +1,18 @@
-import type { IProduct } from "@interfaces/products";
+import type { IProductProps } from "@interfaces/interfaces";
 import { ProductImage } from "./ProductImage";
 import { FaCartPlus } from "react-icons/fa6";
 
-interface IProductCardProps {
-    product: IProduct;
-    favoriteList: IProduct[];
-    addToCartList: (product: IProduct) => void;
-    addToFavoriteList: (product: IProduct) => void;
-}
 
-export const ProductCard = ({ product, favoriteList, addToCartList, addToFavoriteList }: IProductCardProps) => {
+export const ProductCard = ({ 
+    product, 
+    favoriteList, 
+    addToCartList, 
+    addToFavoriteList 
+}: IProductProps) => {
 
     const isFavorite = !favoriteList.includes(product)
-    ? { fill: "none", strokeWidth: "2.5" }
-    : { fill: "red", strokeWidth: "0" }
+        ? { fill: "none", strokeWidth: "2.5" }
+        : { fill: "red", strokeWidth: "0" }
     ;
 
     return (

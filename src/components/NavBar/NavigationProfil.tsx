@@ -1,9 +1,7 @@
+import type { INavigationProfileProps } from "@interfaces/interfaces"
 
-interface INavigationProfilProps {
-    countFavorite: number;
-}
 
-export const NavigationProfil = ({ countFavorite }: INavigationProfilProps) => {
+export const NavigationProfil = ({countFavorite}: INavigationProfileProps) => {
     return (
         <div className="dropdown dropdown-end">
             <div

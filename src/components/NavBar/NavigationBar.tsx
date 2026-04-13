@@ -1,20 +1,14 @@
-import type { IProduct } from "@/interfaces/products";
+import type { INavigationProps } from "@interfaces/interfaces";
 import { NavigationCart, NavigationProfil } from "@components";
 
-interface INavigationBarProps {
-    countFavorite: number;
-    cartList: IProduct[];
-    removeFromCartList: (product: IProduct) => void;
-    decrementProductQuantity: (product: IProduct) => void;
-}
 
 export const NavigationBar = ({ 
-    countFavorite, 
     cartList,
     removeFromCartList,
-    decrementProductQuantity
+    decrementProductQuantity,
+    countFavorite
 
- }: INavigationBarProps) => {
+ }: INavigationProps) => {
     return (
         <>
             <div className="w-full max-w-7xl mx-auto mt-1 mb-8 px-2">

@@ -1,19 +1,13 @@
-import type { IProduct } from "@/interfaces/products";
+import type { INavigationCartProps } from "@interfaces/interfaces";
 import { Link } from "react-router";
 import { ProductCartList } from "../Product/ProductCartList";
 import { FaCartShopping } from "react-icons/fa6";
 
-interface INavigationCartProps {
-    cartList: IProduct[];
-    removeFromCartList: (product: IProduct) => void;
-    decrementProductQuantity: (product: IProduct) => void;
-}
 
 export const NavigationCart = ({
     cartList,
     removeFromCartList,
     decrementProductQuantity
-
 }: INavigationCartProps) => {
 
     const totalItemInCart = cartList.reduce((total, item) => total + (item.quantity || 0), 0);
@@ -61,12 +55,8 @@ export const NavigationCart = ({
                                                   <ProductCartList
                                                       key={product.id}
                                                       product={product}
-                                                      removeFromCartList={
-                                                          removeFromCartList
-                                                      }
-                                                      decrementProductQuantity={
-                                                          decrementProductQuantity
-                                                      }
+                                                      removeFromCartList={removeFromCartList}
+                                                      decrementProductQuantity={decrementProductQuantity}
                                                   />
                                               ))
                                             : "Your cart is empty"}
