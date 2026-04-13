@@ -1,27 +1,29 @@
-import { ProductCard } from '@components';
-import products from '@data/products';
-import type { IHomeProps } from '@interfaces/interfaces';
+import { ProductList } from '@components';
+import type { IProductListProps } from '@interfaces/interfaces';
 
 
 export const Home = ({
-    favoriteList, 
     addToCartList, 
-    toggleFavorite
-}: IHomeProps) => {
+    toggleFavorite,
+    emptyListMessage,
+    isFavoritesPage,
+    productList,
+    productDB 
+}: IProductListProps) => {
 
   return (
-    <>
-      <div className="flex flex-wrap justify-center gap-10 mb-40">
-        {products.map((product) => (
-          <ProductCard 
-            key={product.id} 
-            product={product}
-            favoriteList={favoriteList}
-            addToCartList={addToCartList}
-            addToFavoriteList={toggleFavorite}
-          />
-        ))}
-      </div>
-    </>
+    <div className="px-8 py-1">
+      <h1 className="text-3xl font-bold mb-20 text-left">
+        Home
+      </h1>
+      <ProductList
+        addToCartList={addToCartList}
+        toggleFavorite={toggleFavorite}
+        emptyListMessage={emptyListMessage}
+        isFavoritesPage={isFavoritesPage}
+        productList={productList}
+        productDB={productDB}
+      />
+    </div>
   )
 }

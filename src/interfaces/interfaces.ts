@@ -20,6 +20,15 @@ export interface IProductProps {
   addToFavoriteList: (product: IProduct) => void
 }
 
+export interface IProductListProps {
+  addToCartList: (product: IProduct) => void;
+  toggleFavorite: (product: IProduct) => void;
+  emptyListMessage: string;
+  isFavoritesPage: boolean;
+  productList: IProduct[];
+  productDB?: IProduct[]
+}
+
 export interface IProductCartListProps {
   product: IProduct;
   removeFromCartList: (product: IProduct) => void;
@@ -46,10 +55,4 @@ export interface INavigationCartProps {
 
 export interface INavigationProfileProps {
   countFavorite: number
-}
-
-export interface IHomeProps {
-  favoriteList: IProduct[];
-  addToCartList: (product: IProduct) => void;
-  toggleFavorite: (product: IProduct) => void
 }
