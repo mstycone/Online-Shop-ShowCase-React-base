@@ -47,3 +47,9 @@ export interface INavigationCartProps {
 export interface INavigationProfileProps {
   countFavorite: number
 }
+
+export interface IHomeProps {
+  favoriteList: IProduct[];
+  addToCartList: (product: IProduct) => void;
+  toggleFavorite: (product: IProduct) => void
+}

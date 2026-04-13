@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
 import type { INavigationProfileProps } from "@interfaces/interfaces"
 
 
 export const NavigationProfil = ({countFavorite}: INavigationProfileProps) => {
+
     return (
         <div className="dropdown dropdown-end">
             <div
@@ -21,15 +23,16 @@ export const NavigationProfil = ({countFavorite}: INavigationProfileProps) => {
                 className="menu menu-sl dropdown-content bg-base-100 rounded-box z-1 mt-3 w-70 p-2 shadow"
             >
                 <li>
-                    <a className="justify-between">
-                        Profile
-                        <span className="badge">New</span>
-                    </a>
+                    <Link to="/profile">
+                        <span className="justify-between">Profile</span>
+                        <span className="badge absolute">New</span>
+                    </Link>
                 </li>
                 <li>
-                    <a className="justify-between">
-                        Favorites{" "}
-                        {countFavorite > 99 ? "(99+)" : `(${countFavorite})`}
+                    <Link to="/favorites">
+                        <span className="justify-between">
+                            Favorites {countFavorite > 99 ? "(99+)" : `(${countFavorite})`}
+                        </span>
                         <span className="badge">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -46,13 +49,24 @@ export const NavigationProfil = ({countFavorite}: INavigationProfileProps) => {
                                 />
                             </svg>
                         </span>
-                    </a>
+                    </Link>
                 </li>
                 <li>
-                    <a>Settings</a>
+                    <Link to="/settings">
+                        <span>Settings</span>
+                    </Link>
                 </li>
                 <li>
-                    <a>Logout</a>
+                    <div className="collapse">
+                    <input type="checkbox" className="peer" />
+                    <div className="collapse-title btn min-h-0 h-11 bg-base-100 items-center outline-transparent justify-center outline-0">Logout</div>
+                    <div className="collapse-content">
+                        <ul className="menu menu-sm">
+                            <li className="list-row my-0.5 text-white"><Link to="/auth/signin" style={{ marginInline: '10px' }}>SignIn</Link></li>
+                            <li className="list-row my-0.5 text-white"><Link to="/auth/signup" style={{ marginInline: '10px' }}>SignUp</Link></li>
+                        </ul>
+                    </div>
+                    </div>
                 </li>
             </ul>
         </div>

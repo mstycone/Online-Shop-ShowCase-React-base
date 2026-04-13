@@ -1,5 +1,5 @@
+import { ProductImage } from "@components";
 import type { IProductCartListProps } from "@interfaces/interfaces";
-import { ProductImage } from "./ProductImage";
 import { BsCartDash } from "react-icons/bs";
 import { FaTrashCan } from "react-icons/fa6";
 

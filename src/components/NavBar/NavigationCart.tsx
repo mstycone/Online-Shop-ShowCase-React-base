@@ -1,6 +1,6 @@
+import { ProductCartList } from "@components";
 import type { INavigationCartProps } from "@interfaces/interfaces";
-import { Link } from "react-router";
-import { ProductCartList } from "../Product/ProductCartList";
+import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 
 

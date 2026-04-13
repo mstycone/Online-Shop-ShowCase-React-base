@@ -1,5 +1,5 @@
+import { ProductImage } from "@components";
 import type { IProductProps } from "@interfaces/interfaces";
-import { ProductImage } from "./ProductImage";
 import { FaCartPlus } from "react-icons/fa6";
 
 

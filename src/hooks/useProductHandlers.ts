@@ -1,6 +1,6 @@
 
+import type { IProduct } from "@interfaces/interfaces";
 import { useState } from "react";
-import type { IProduct } from "@/interfaces/interfaces";
 
 export function useProductHandlers() {
 
@@ -11,7 +11,7 @@ export function useProductHandlers() {
     return (list.find((item) => item.id === product.id)) ? product : undefined;  
   };
     
-    const addTocartList = (product: IProduct) => {
+    const addToCartList = (product: IProduct) => {
     
         const isCartList = (!isOnTheList(cartList, product))
           ? [...cartList, {...product, quantity: 1}]
@@ -30,7 +30,7 @@ export function useProductHandlers() {
     
     const confirmRemoveMessage = "Are you sure you want to remove this item from your cart?";
 
-    const removeFromcartList = (product: IProduct) => {
+    const removeFromCartList = (product: IProduct) => {
         const productInCart = isOnTheList(cartList, product);
     
         const confirmMessage: string = 
@@ -83,14 +83,13 @@ export function useProductHandlers() {
         ;
     
         setFavoriteList(isFavorite);
-        return favoriteList;
     }
 
     return {
         cartList,
         setCartList,
-        addTocartList,
-        removeFromcartList,
+        addToCartList,
+        removeFromCartList,
         decrementQuantity,
         favoriteList,
         setFavoriteList,
