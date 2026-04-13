@@ -13,10 +13,7 @@ export const Favorites = ({
 
   return (
     <div className="px-8 py-1">
-      <PageTitle
-        pageTitle={pageTitle}
-      />
-
+      <PageTitle pageTitle={pageTitle}/>
       <ProductList
         addToCartList={addToCartList}
         toggleFavorite={toggleFavorite}

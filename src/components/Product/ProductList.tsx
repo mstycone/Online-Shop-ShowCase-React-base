@@ -18,13 +18,14 @@ export const ProductList = ({
     ;
 
     const ifEmptyList = (isFavoritesPage)
-        ? (<div className="text-2xl text-center my-10">
+        ? (
+            <div className="text-2xl text-center my-10">
                 <div>{emptyListMessage}</div>
                 <div className="inline-block mt-4 text-6xl">
                     <BsBookmarkHeart />
                 </div>
             </div>
-         )
+          )
         : (
             <div className="text-2xl text-center my-10">
                 {emptyListMessage}

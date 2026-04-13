@@ -10,9 +10,10 @@ export const ProductCard = ({
     addToFavoriteList 
 }: IProductProps) => {
 
-    const isFavorite = !favoriteList.includes(product)
-        ? { fill: "none", strokeWidth: "2.5" }
-        : { fill: "red", strokeWidth: "0" }
+    const isFavorite = 
+        (!favoriteList.find((i) => i.id === product.id))
+            ? { fill: "none", strokeWidth: "2.5" }
+            :  { fill: "red" , strokeWidth: "0" }
     ;
 
     return (

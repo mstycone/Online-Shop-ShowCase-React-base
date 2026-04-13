@@ -17,23 +17,22 @@ export interface IProductProps {
   product: IProduct;
   favoriteList: IProduct[];
   addToCartList: (product: IProduct) => void;
-  addToFavoriteList: (product: IProduct) => void
+  addToFavoriteList: (product: IProduct) => void;
+  removeFromCartList?: (product: IProduct) => void;
+  decrementProductQuantity?: (product: IProduct) => void
 }
 
-export interface IProductListProps {
-  addToCartList: (product: IProduct) => void;
+export interface IProductListProps extends Pick<IProductProps, 'addToCartList'> {
   toggleFavorite: (product: IProduct) => void;
   emptyListMessage: string;
   isFavoritesPage: boolean;
   productList: IProduct[];
   productDB?: IProduct[]
 }
-
-export interface IProductCartListProps extends Pick<IProductProps, 'product'>{
+export interface IProductCartListProps extends Pick<IProductProps, "product">{
   removeFromCartList: (product: IProduct) => void;
   decrementProductQuantity: (product: IProduct) => void
 }
-
 export interface IProductImageProps extends Pick<IProductProps, 'product'>{
   className: string
 }
