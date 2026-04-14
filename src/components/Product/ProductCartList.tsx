@@ -1,4 +1,4 @@
-import { productPrice } from "@/utilities/fonctions";
+import { productPrice } from "@utilities/fonctions";
 import { ProductImage } from "@components";
 import type { IProductCartListProps } from "@interfaces/interfaces";
 import { FaTrashCan } from "react-icons/fa6";

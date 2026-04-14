@@ -1,4 +1,4 @@
-import { productPrice } from "@/utilities/fonctions";
+import { productPrice } from "@utilities/fonctions";
 import { ProductImage } from "@components";
 import type { IProductProps } from "@interfaces/interfaces";
 import { FaCartPlus, FaTrashCan, FaRegSquarePlus, FaRegSquareMinus } from "react-icons/fa6";
