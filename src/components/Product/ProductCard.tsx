@@ -1,13 +1,16 @@
+import { productPrice } from "@/utilities/fonctions";
 import { ProductImage } from "@components";
 import type { IProductProps } from "@interfaces/interfaces";
-import { FaCartPlus } from "react-icons/fa6";
+import { FaCartPlus, FaTrashCan, FaRegSquarePlus, FaRegSquareMinus } from "react-icons/fa6";
 
 
 export const ProductCard = ({ 
     product, 
     favoriteList, 
     addToCartList, 
-    addToFavoriteList 
+    addToFavoriteList, 
+    removeFromCartList,
+    decrementProductQuantity
 }: IProductProps) => {
 
     const isFavorite = 
@@ -15,6 +18,10 @@ export const ProductCard = ({
             ? { fill: "none", strokeWidth: "2.5" }
             :  { fill: "red" , strokeWidth: "0" }
     ;
+
+    const isCartList = (removeFromCartList && decrementProductQuantity)
+    const price = productPrice(product);
+
 
     return (
         <>
@@ -45,6 +52,23 @@ export const ProductCard = ({
                                 />
                             </svg>
                         </button>
+                        { 
+                            (isCartList)
+                                ? (
+                                    <div className=" inline-1 absolute top-14 right-10 items-center">
+                                        <span className={`text-xl text-primary p-1.25 font-bold text-center`}>
+                                            x{product.quantity}
+                                        </span>
+                                        <button 
+                                            onClick={()=>removeFromCartList(product)} 
+                                            className="btn btn-square btn-ghost btn-sm my-3.25 p-1.5 hover:scale-120 bg-transparent border-none active:scale-90"
+                                        >
+                                            <FaTrashCan size={25} className="text-primary/65 hover:text-primary" />
+                                        </button>
+                                    </div>
+                                  )
+                                : null
+                        }
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title self-center line-clamp-2">{product.title}</h2>
@@ -52,9 +76,43 @@ export const ProductCard = ({
                         {product.price} €
                     </div>
                     <p className="line-clamp-3">{product.description}</p>
-                    <div className="card-actions justify-end mt-3">
-                        <button onClick={() => addToCartList(product)} className="btn btn-ghost text-xl text-white active:scale-90"><FaCartPlus size={30} style={{margin: 10}}/></button>
-                    </div>
+                    {
+                        (isCartList)
+                            ? (
+                                <div>
+                                    <div className="card-actions justify-start mt-3">
+                                        <div className="inblock-1">
+                                        <button 
+                                            onClick={() => addToCartList(product)} 
+                                            className="btn btn-ghost text-xl text-white active:scale-90"
+                                        >
+                                            <FaRegSquarePlus size={30} style={{margin: 10}}/>
+                                        </button>
+                                        <span className="text-white font-bold">Quantity</span>
+                                        <button 
+                                            onClick={() => decrementProductQuantity(product)} 
+                                            className="btn btn-ghost text-xl text-white active:scale-90"
+                                        >
+                                            <FaRegSquareMinus size={30} style={{margin: 10}}/>
+                                        </button>
+                                        </div>
+                                        <span className="text-info justify-start font-bold">
+                                            Subtotal: {price} €
+                                        </span>
+                                    </div>
+                                </div>
+                              )
+                            : (
+                                <div className="card-actions justify-end mt-3">
+                                    <button 
+                                        onClick={() => addToCartList(product)} 
+                                        className="btn btn-ghost text-xl text-white active:scale-90"
+                                    >
+                                        <FaCartPlus size={30} style={{margin: 10}}/>
+                                    </button>
+                                </div>
+                              )
+                    }
                 </div>
             </div>
         </>

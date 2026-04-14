@@ -1,3 +1,4 @@
+import { productPrice } from "@/utilities/fonctions";
 import { ProductImage } from "@components";
 import type { IProductCartListProps } from "@interfaces/interfaces";
 import { BsCartDash } from "react-icons/bs";
@@ -9,6 +10,8 @@ export const ProductCartList = ({
     removeFromCartList, 
     decrementProductQuantity 
 }: IProductCartListProps ) => {
+
+    const price = productPrice(product);
     
     return (
         <li className="list-row relative flex justify-between my-1.5 items-center">
@@ -34,11 +37,7 @@ export const ProductCartList = ({
             <div>
                 <div className="text-xs text-white">{product.title.slice(0, 12)}..</div>
                 <div className="text-sm uppercase font-semibold text-white">
-                    {product.quantity
-                        ? Number((product.price * product.quantity).toFixed(2))
-                        : Number(product.price.toFixed(2))
-                    }
-                    €
+                    {price} €
                 </div>
             </div>
             <div className="bg-transparent">

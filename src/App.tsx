@@ -49,6 +49,8 @@ export default function App() {
               productList={favoriteList}
               productDB={cartList}
               pageTitle="Your Cart"
+              removeFromCartList={removeFromCartList}
+              decrementProductQuantity={decrementQuantity}
             />
           }
         />

@@ -9,13 +9,17 @@ export const ProductList = ({
     emptyListMessage,
     isFavoritesPage,
     productList,
-    productDB
+    productDB,
+    decrementProductQuantity,
+    removeFromCartList
 }: IProductListProps) => {
 
     const mainProductList = (productDB) 
         ? productDB
         : productList
     ;
+
+    const isCartList = (removeFromCartList && decrementProductQuantity);
 
     const ifEmptyList = (isFavoritesPage)
         ? (
@@ -38,13 +42,27 @@ export const ProductList = ({
         {mainProductList.length > 0 
             ? ( 
                 mainProductList.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                        favoriteList={productList}
-                        addToCartList={addToCartList}
-                        addToFavoriteList={toggleFavorite}
-                    />
+                    (isCartList) 
+                        ? (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                favoriteList={productList}
+                                addToCartList={addToCartList}
+                                addToFavoriteList={toggleFavorite}
+                                removeFromCartList={removeFromCartList}
+                                decrementProductQuantity={decrementProductQuantity}
+                            />
+                          )
+                        : (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                favoriteList={productList}
+                                addToCartList={addToCartList}
+                                addToFavoriteList={toggleFavorite}
+                            />
+                          )
                 ))
              )
             : (ifEmptyList)

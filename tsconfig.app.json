@@ -23,6 +23,7 @@
       "@components": ["./src/components/index.ts"],
       "@components/*": ["./src/components/*"],
       "@interfaces/*": ["./src/interfaces/*"],
+      "@utilities/*": ["./src/utilities/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@data/*": ["./src/data/*"],
       "@screens": ["./src/screens/index.ts"],

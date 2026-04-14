@@ -22,7 +22,7 @@ export interface IProductProps {
   decrementProductQuantity?: (product: IProduct) => void
 }
 
-export interface IProductListProps extends Pick<IProductProps, 'addToCartList'> {
+export interface IProductListProps extends Pick<IProductProps, 'addToCartList' | 'removeFromCartList' | 'decrementProductQuantity'> {
   toggleFavorite: (product: IProduct) => void;
   emptyListMessage: string;
   isFavoritesPage: boolean;

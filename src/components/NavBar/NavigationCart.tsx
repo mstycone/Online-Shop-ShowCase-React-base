@@ -1,5 +1,6 @@
 import { ProductCartList } from "@components";
 import type { INavigationCartProps } from "@interfaces/interfaces";
+import { totalItem, totalPrice } from "@utilities/fonctions";
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 
@@ -10,8 +11,8 @@ export const NavigationCart = ({
     decrementProductQuantity
 }: INavigationCartProps) => {
 
-    const totalItemInCart = cartList.reduce((total, item) => total + (item.quantity || 0), 0);
-    const totalPrice = cartList.reduce((total, item) => total + (item.price * (item.quantity || 0)), 0);
+    const totalItemInCart = totalItem(cartList);
+    const total = Number(totalPrice(cartList).toFixed(2));
     const scrollBarON = cartList.length > 3 ? "overflow-y-scroll scrollbar-thin" : "";
     const isCartEmpty = cartList.length === 0 ? "" : "scroll-smooth min-h-100 max-h-110";
 
@@ -39,7 +40,7 @@ export const NavigationCart = ({
                         {totalItemInCart > 1 ? "s" : ""}
                     </span>
                     <span className="text-info font-bold">
-                        Subtotal: {Number(totalPrice.toFixed(2))} €
+                        Subtotal: {total} €
                     </span>
                     <div className="card-actions flex flex-col w-full">
                         <div className="collapse collapse-arrow bg-base-200 rounded-md">

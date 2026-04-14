@@ -9,8 +9,11 @@ export const Cart = ({
   isFavoritesPage,
   productList, 
   productDB,
-  pageTitle
+  pageTitle,
+  removeFromCartList,
+  decrementProductQuantity
 }: IStandardPageProps) => {
+
 
   return (
     <div className="px-8 py-1">
@@ -22,6 +25,8 @@ export const Cart = ({
         isFavoritesPage={isFavoritesPage}
         productList={productList}
         productDB={productDB}
+        removeFromCartList={removeFromCartList}
+        decrementProductQuantity={decrementProductQuantity}
       />
     </div>
   )
