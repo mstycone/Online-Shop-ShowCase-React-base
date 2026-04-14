@@ -6,7 +6,6 @@ import type { INavigationProps } from "@interfaces/interfaces";
 export const NavigationBar = ({ 
     cartList,
     removeFromCartList,
-    decrementProductQuantity,
     countFavorite
  }: INavigationProps) => {
 
@@ -25,7 +24,6 @@ export const NavigationBar = ({
                         <NavigationCart 
                             cartList={cartList} 
                             removeFromCartList={removeFromCartList}
-                            decrementProductQuantity={decrementProductQuantity}
                         />
                         <NavigationProfil countFavorite={countFavorite}/>
                     </div>

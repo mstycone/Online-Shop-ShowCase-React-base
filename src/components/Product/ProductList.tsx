@@ -1,6 +1,7 @@
 import { ProductCard } from '@components';
 import type { IProductListProps } from '@interfaces/interfaces';
 import { BsBookmarkHeart } from 'react-icons/bs';
+import { totalPrice } from '@utilities/fonctions';
 
 
 export const ProductList = ({
@@ -37,36 +38,42 @@ export const ProductList = ({
           )
     ;
 
+    const total = totalPrice(mainProductList);
+    const displayTotalPrice = <h4 className='text-3xl text-white font-bold mb-5 flex justify-start'>Total : {total}€</h4>;
+
   return (
-    <div className="flex flex-wrap justify-center gap-10 mb-40">
-        {mainProductList.length > 0 
-            ? ( 
-                mainProductList.map((product) => (
-                    (isCartList) 
-                        ? (
-                            <ProductCard
-                                key={product.id}
-                                product={product}
-                                favoriteList={productList}
-                                addToCartList={addToCartList}
-                                addToFavoriteList={toggleFavorite}
-                                removeFromCartList={removeFromCartList}
-                                decrementProductQuantity={decrementProductQuantity}
-                            />
-                          )
-                        : (
-                            <ProductCard
-                                key={product.id}
-                                product={product}
-                                favoriteList={productList}
-                                addToCartList={addToCartList}
-                                addToFavoriteList={toggleFavorite}
-                            />
-                          )
-                ))
-             )
-            : (ifEmptyList)
-        }
+    <div>
+        { isCartList && displayTotalPrice }
+        <div className="flex flex-wrap justify-center gap-10 mb-40">
+            {mainProductList.length > 0 
+                ? ( 
+                    mainProductList.map((product) => (
+                        (isCartList) 
+                            ? (
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    favoriteList={productList}
+                                    addToCartList={addToCartList}
+                                    addToFavoriteList={toggleFavorite}
+                                    removeFromCartList={removeFromCartList}
+                                    decrementProductQuantity={decrementProductQuantity}
+                                />
+                              )
+                            : (
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                    favoriteList={productList}
+                                    addToCartList={addToCartList}
+                                    addToFavoriteList={toggleFavorite}
+                                />
+                              )
+                    ))
+                  )  
+                : (ifEmptyList)
+            }
+        </div>
     </div>
   )
 }

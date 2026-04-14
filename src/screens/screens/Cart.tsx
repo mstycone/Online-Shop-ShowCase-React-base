@@ -17,7 +17,7 @@ export const Cart = ({
 
   return (
     <div className="px-8 py-1">
-      <PageTitle pageTitle={pageTitle}/>
+      <PageTitle pageTitle={pageTitle} cartList={productDB}/>
       <ProductList
         addToCartList={addToCartList}
         toggleFavorite={toggleFavorite}

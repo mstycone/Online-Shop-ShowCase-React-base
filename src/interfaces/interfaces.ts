@@ -31,7 +31,6 @@ export interface IProductListProps extends Pick<IProductProps, 'addToCartList' |
 }
 export interface IProductCartListProps extends Pick<IProductProps, "product">{
   removeFromCartList: (product: IProduct) => void;
-  decrementProductQuantity: (product: IProduct) => void
 }
 export interface IProductImageProps extends Pick<IProductProps, 'product'>{
   className: string
@@ -47,7 +46,8 @@ export interface INavigationProfileProps {
 export interface INavigationProps extends INavigationCartProps, INavigationProfileProps {}
 
 export interface IPageTitleProps {
-  pageTitle: string
+  pageTitle: string,
+  cartList?: IProduct[]
 }
 
 export interface IStandardPageProps extends IProductListProps, IPageTitleProps {}

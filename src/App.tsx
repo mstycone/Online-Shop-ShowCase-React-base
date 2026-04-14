@@ -21,7 +21,6 @@ export default function App() {
         countFavorite={favoriteList.length}
         cartList={cartList}
         removeFromCartList={removeFromCartList}
-        decrementProductQuantity={decrementQuantity}
       />
       <Routes>
         <Route 

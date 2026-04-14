@@ -8,11 +8,10 @@ import { FaCartShopping } from "react-icons/fa6";
 export const NavigationCart = ({
     cartList,
     removeFromCartList,
-    decrementProductQuantity
 }: INavigationCartProps) => {
 
     const totalItemInCart = totalItem(cartList);
-    const total = Number(totalPrice(cartList).toFixed(2));
+    const total = totalPrice(cartList);
     const scrollBarON = cartList.length > 3 ? "overflow-y-scroll scrollbar-thin" : "";
     const isCartEmpty = cartList.length === 0 ? "" : "scroll-smooth min-h-100 max-h-110";
 
@@ -57,7 +56,6 @@ export const NavigationCart = ({
                                                       key={product.id}
                                                       product={product}
                                                       removeFromCartList={removeFromCartList}
-                                                      decrementProductQuantity={decrementProductQuantity}
                                                   />
                                               ))
                                             : "Your cart is empty"}

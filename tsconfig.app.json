@@ -19,7 +19,7 @@
 
     /* Alias */
     "paths": {
-      "@/*": ["./src/*"],
+      "@*": ["./src/*"],
       "@components": ["./src/components/index.ts"],
       "@components/*": ["./src/components/*"],
       "@interfaces/*": ["./src/interfaces/*"],

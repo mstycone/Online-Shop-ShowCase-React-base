@@ -56,12 +56,12 @@ export const ProductCard = ({
                             (isCartList)
                                 ? (
                                     <div className=" inline-1 absolute top-14 right-10 items-center">
-                                        <span className={`text-xl text-primary p-1.25 font-bold text-center`}>
+                                        <span className="inline-block rounded-lg text-xl text-primary p-1.25 font-bold bg-white border- text-center">
                                             x{product.quantity}
                                         </span>
                                         <button 
                                             onClick={()=>removeFromCartList(product)} 
-                                            className="btn btn-square btn-ghost btn-sm my-3.25 p-1.5 hover:scale-120 bg-transparent border-none active:scale-90"
+                                            className="btn btn-square btn-ghost btn-sm my-3.25 p-1.5 bg-white hover:scale-120 border-none active:scale-90"
                                         >
                                             <FaTrashCan size={25} className="text-primary/65 hover:text-primary" />
                                         </button>
@@ -80,25 +80,25 @@ export const ProductCard = ({
                         (isCartList)
                             ? (
                                 <div>
-                                    <div className="card-actions justify-start mt-3">
-                                        <div className="inblock-1">
-                                        <button 
-                                            onClick={() => addToCartList(product)} 
-                                            className="btn btn-ghost text-xl text-white active:scale-90"
-                                        >
-                                            <FaRegSquarePlus size={30} style={{margin: 10}}/>
-                                        </button>
-                                        <span className="text-white font-bold">Quantity</span>
-                                        <button 
-                                            onClick={() => decrementProductQuantity(product)} 
-                                            className="btn btn-ghost text-xl text-white active:scale-90"
-                                        >
-                                            <FaRegSquareMinus size={30} style={{margin: 10}}/>
-                                        </button>
-                                        </div>
-                                        <span className="text-info justify-start font-bold">
-                                            Subtotal: {price} €
+                                    <div className="card-actions mt-3 flex justify-between ">
+                                        <span className="text-info text-base font-bold my-auto">
+                                            Total € : {price}
                                         </span>
+                                        <div className="">
+                                            <button 
+                                                onClick={() => addToCartList(product)} 
+                                                className="btn btn-ghost px-0 text-xl text-white active:scale-90"
+                                            >
+                                                <FaRegSquarePlus size={30} style={{margin: 10}}/>
+                                            </button>
+                                            <span className="text-white font-bold">Quantity</span>
+                                            <button 
+                                                onClick={() => decrementProductQuantity(product)} 
+                                                className="btn btn-ghost px-0 text-xl text-white active:scale-90"
+                                            >
+                                                <FaRegSquareMinus size={30} style={{margin: 10}}/>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                               )

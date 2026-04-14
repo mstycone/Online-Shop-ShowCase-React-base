@@ -1,28 +1,18 @@
 import { productPrice } from "@/utilities/fonctions";
 import { ProductImage } from "@components";
 import type { IProductCartListProps } from "@interfaces/interfaces";
-import { BsCartDash } from "react-icons/bs";
 import { FaTrashCan } from "react-icons/fa6";
 
 
 export const ProductCartList = ({ 
     product, 
     removeFromCartList, 
-    decrementProductQuantity 
 }: IProductCartListProps ) => {
 
     const price = productPrice(product);
     
     return (
         <li className="list-row relative flex justify-between my-1.5 items-center">
-            <div className="absolute top-0 right-0 bg-transparent">
-                <button 
-                    onClick={() => decrementProductQuantity(product)}
-                    className="btn btn-square btn-ghost btn-xs bg-transparent hover:scale-120 active:scale-90"
-                >
-                    <BsCartDash size={15} className="text-white" />
-                </button>
-            </div>
             <div className="indicator hover:bg-transparent">
                 <ProductImage
                     product={product}
