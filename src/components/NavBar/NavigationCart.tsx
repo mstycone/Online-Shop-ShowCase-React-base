@@ -13,7 +13,7 @@ export const NavigationCart = ({
     const totalItemInCart = totalItem(cartList);
     const total = totalPrice(cartList);
     const scrollBarON = cartList.length > 3 ? "overflow-y-scroll scrollbar-thin" : "";
-    const isCartEmpty = cartList.length === 0 ? "" : "scroll-smooth min-h-100 max-h-110";
+    const isCartEmpty = cartList.length !== 0 && "scroll-smooth min-h-100 max-h-110";
 
     return (
         <div className="dropdown dropdown-end">
@@ -36,7 +36,7 @@ export const NavigationCart = ({
                 <div className="card-body">
                     <span className="text-lg font-bold text-white/90">
                         {totalItemInCart > 99 ? "99+" : totalItemInCart} Item
-                        {totalItemInCart > 1 ? "s" : ""}
+                        {totalItemInCart > 1 && "s"}
                     </span>
                     <span className="text-info font-bold">
                         Subtotal: {total} €

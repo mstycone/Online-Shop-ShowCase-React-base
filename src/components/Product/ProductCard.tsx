@@ -54,7 +54,7 @@ export const ProductCard = ({
                         </button>
                         { 
                             (isCartList)
-                                ? (
+                                && (
                                     <div className=" inline-1 absolute top-14 right-10 items-center">
                                         <span className="inline-block rounded-lg text-xl text-primary p-1.25 font-bold bg-white border- text-center">
                                             x{product.quantity}
@@ -67,7 +67,6 @@ export const ProductCard = ({
                                         </button>
                                     </div>
                                   )
-                                : null
                         }
                 </figure>
                 <div className="card-body">
