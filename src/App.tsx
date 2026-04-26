@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { NavigationBar } from "@components"
 import { Home, Favorites, Profile, SignIn, SignUp, Settings, Cart } from "@screens";
 import { useProductHandlers } from "@hooks/useProductHandlers";
@@ -16,7 +16,7 @@ export default function App() {
   } = useProductHandlers()
   
   return (
-    <BrowserRouter>
+    <>
       <NavigationBar
         countFavorite={favoriteList.length}
         cartList={cartList}
@@ -71,6 +71,6 @@ export default function App() {
         <Route path="/auth/signup" element={<SignUp pageTitle="Sign Up"/>}/>
         <Route path="/settings" element={<Settings pageTitle="Settings"/>}/>
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }

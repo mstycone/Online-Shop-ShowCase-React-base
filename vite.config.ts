@@ -18,7 +18,8 @@ export default defineConfig({
       "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@utilities": path.resolve(__dirname,"./src/utilities"),
       "@data": path.resolve(__dirname, "./src/data"),
-      "@screens": path.resolve(__dirname, "./src/screens")
+      "@screens": path.resolve(__dirname, "./src/screens"),
+      "@api": path.resolve(__dirname, "./services/api")
     },
   },
 })

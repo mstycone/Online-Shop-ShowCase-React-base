@@ -56,14 +56,14 @@ export const ProductCard = ({
                             (isCartList)
                                 && (
                                     <div className=" inline-1 absolute top-14 right-10 items-center">
-                                        <span className="inline-block rounded-lg text-xl text-primary p-1.25 font-bold bg-white border- text-center">
+                                        <span className="inline-block rounded-lg text-xl text-primary p-1.25 font-bold bg-white text-center">
                                             x{product.quantity}
                                         </span>
                                         <button 
                                             onClick={()=>removeFromCartList(product)} 
-                                            className="btn btn-square btn-ghost btn-sm my-3.25 p-1.5 bg-white hover:scale-120 border-none active:scale-90"
+                                            className="btn btn-square btn-ghost btn-sm my-3.25 p-1.5 bg-white text-primary/65 hover:text-primary hover:scale-120 border-none active:scale-90"
                                         >
-                                            <FaTrashCan size={25} className="text-primary/65 hover:text-primary" />
+                                            <FaTrashCan size={25} />
                                         </button>
                                     </div>
                                   )
