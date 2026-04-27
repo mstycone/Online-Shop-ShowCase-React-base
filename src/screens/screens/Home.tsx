@@ -18,8 +18,7 @@ export const Home = ({
   useEffect(() => {
     async function loadProducts(){
       const products = await getProducts();
-      const productsDisplay = [...products];
-      setProducts(productsDisplay)
+      setProducts(products)
     }
 
     loadProducts();
