@@ -3,10 +3,8 @@ import { NavigationCardBody } from "@components";
 import { totalItem } from "@utilities/fonctions";
 import { FaCartShopping } from "react-icons/fa6";
 
-export const NavigationCart = ({
-    cartList,
-    removeFromCartList,
-}: INavigationCartProps) => {
+export const NavigationCart = ({ cartList, removeFromCartList }: INavigationCartProps) => {
+    
     const totalItemInCart = totalItem(cartList);
 
     return (
@@ -27,7 +25,10 @@ export const NavigationCart = ({
                 tabIndex={0}
                 className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-70 shadow"
             >
-                <NavigationCardBody cartList={cartList} removeFromCartList={removeFromCartList}/>
+                <NavigationCardBody 
+                    cartList={cartList} 
+                    removeFromCartList={removeFromCartList}
+                />
             </div>
         </div>
     );

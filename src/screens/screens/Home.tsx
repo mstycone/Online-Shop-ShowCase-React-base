@@ -14,14 +14,12 @@ export const Home = ({
 }: IStandardPageProps) => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     async function loadProducts(){
-      setLoading(true);
       const products = await getProducts();
-      setLoading(false);
-      setProducts(products)
+      const productsDisplay = [...products];
+      setProducts(productsDisplay)
     }
 
     loadProducts();

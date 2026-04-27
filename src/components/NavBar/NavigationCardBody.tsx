@@ -4,10 +4,7 @@ import { ProductCartList } from "@components";
 import { Link } from "react-router-dom";
 
 
-export const NavigationCardBody = ({
-    cartList,
-    removeFromCartList,
-}: INavigationCartProps) => {
+export const NavigationCardBody = ({ cartList, removeFromCartList }: INavigationCartProps) => {
 
     const totalItemInCart = totalItem(cartList);
     const total = totalPrice(cartList);
@@ -17,8 +14,7 @@ export const NavigationCardBody = ({
     return (
         <div className="card-body">
             <span className="text-lg font-bold text-white/90">
-                {totalItemInCart > 99 ? "99+" : totalItemInCart} Item
-                {totalItemInCart > 1 && "s"}
+                {totalItemInCart > 99 ? "99+" : totalItemInCart} Item{totalItemInCart > 1 && "s"}
             </span>
             <span className="text-info font-bold">Subtotal: {total} €</span>
             <div className="card-actions flex flex-col w-full">
@@ -35,9 +31,7 @@ export const NavigationCardBody = ({
                                           <ProductCartList
                                               key={product.id}
                                               product={product}
-                                              removeFromCartList={
-                                                  removeFromCartList
-                                              }
+                                              removeFromCartList={removeFromCartList}
                                           />
                                       ))
                                     : "Your cart is empty"}

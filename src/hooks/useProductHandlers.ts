@@ -1,15 +1,12 @@
 
 import type { IProduct } from "@interfaces/interfaces";
+import { isOnTheList } from "@utilities/fonctions";
 import { useState } from "react";
 
 export function useProductHandlers() {
 
     //State pour la liste des produits dans le panier
     const [cartList, setCartList] = useState<IProduct[]>([]);
-    
-  const isOnTheList = (list: IProduct[], product:IProduct): IProduct | undefined => { 
-    return (list.find((item) => item.id === product.id)) ? product : undefined;  
-  };
     
     const addToCartList = (product: IProduct) => {
     

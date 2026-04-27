@@ -3,11 +3,7 @@ import { NavigationCart, NavigationProfil } from "@components";
 import type { INavigationProps } from "@interfaces/interfaces";
 
 
-export const NavigationBar = ({ 
-    cartList,
-    removeFromCartList,
-    countFavorite
- }: INavigationProps) => {
+export const NavigationBar = ({ cartList, removeFromCartList, countFavorite}: INavigationProps) => {
 
     return (
         <>

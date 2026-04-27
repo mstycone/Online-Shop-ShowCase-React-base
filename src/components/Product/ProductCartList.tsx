@@ -4,10 +4,7 @@ import type { IProductCartListProps } from "@interfaces/interfaces";
 import { FaTrashCan } from "react-icons/fa6";
 
 
-export const ProductCartList = ({ 
-    product, 
-    removeFromCartList, 
-}: IProductCartListProps ) => {
+export const ProductCartList = ({ product, removeFromCartList }: IProductCartListProps ) => {
 
     const price = productPrice(product);
     

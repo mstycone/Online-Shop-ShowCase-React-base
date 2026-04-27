@@ -15,3 +15,7 @@ export function productPrice (product: IProduct) {
     ;
     return productPrice;
 }
+
+export const isOnTheList = (list: IProduct[], product:IProduct): IProduct | undefined => { 
+    return (list.find((item) => item.id === product.id)) ? product : undefined;  
+}
