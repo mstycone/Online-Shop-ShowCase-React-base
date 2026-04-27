@@ -1,4 +1,5 @@
 export { NavigationBar } from "./NavBar/NavigationBar";
+export { NavigationCardBody } from "./NavBar/NavigationCardBody";
 export { NavigationProfil } from "./NavBar/NavigationProfil";
 export { NavigationCart } from "./NavBar/NavigationCart";       
 export { ProductCard } from "./Product/ProductCard";

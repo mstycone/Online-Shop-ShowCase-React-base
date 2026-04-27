@@ -28,7 +28,8 @@
       "@data*": ["./src/data/*"],
       "@screens": ["./src/screens/index.ts"],
       "@screens*": ["./src/screens/*"],
-      "@api*": ["./services/api/*"]
+      "@services": ["./src/services/index.ts"],
+      "@services*": ["./src/services/*"]
     },
 
     /* Linting */

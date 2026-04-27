@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { NavigationBar } from "@components"
 import { Home, Favorites, Profile, SignIn, SignUp, Settings, Cart } from "@screens";
 import { useProductHandlers } from "@hooks/useProductHandlers";
-import products from '@data/products';
+//import products from '@data/products';
 
 export default function App() {
   const {
@@ -32,7 +32,6 @@ export default function App() {
               emptyListMessage="There is no products"
               isFavoritesPage={false}
               productList={favoriteList}
-              productDB={products}
               pageTitle="Home"
             />
           }

@@ -1,5 +1,7 @@
 import { ProductList, PageTitle } from '@components';
-import type { IStandardPageProps } from '@interfaces/interfaces';
+import type { IProduct, IStandardPageProps } from '@interfaces/interfaces';
+import { useEffect, useState } from 'react';
+import { getProducts } from '@services';
 
 
 export const Home = ({
@@ -8,9 +10,22 @@ export const Home = ({
     emptyListMessage,
     isFavoritesPage,
     productList,
-    productDB, 
     pageTitle
 }: IStandardPageProps) => {
+
+  const [products, setProducts] = useState<IProduct[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    async function loadProducts(){
+      setLoading(true);
+      const products = await getProducts();
+      setLoading(false);
+      setProducts(products)
+    }
+
+    loadProducts();
+  }, [])
 
   return (
     <div className="px-8 py-1">
@@ -21,7 +36,7 @@ export const Home = ({
         emptyListMessage={emptyListMessage}
         isFavoritesPage={isFavoritesPage}
         productList={productList}
-        productDB={productDB}
+        productDB={products}
       />
     </div>
   )

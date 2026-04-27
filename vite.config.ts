@@ -19,7 +19,7 @@ export default defineConfig({
       "@utilities": path.resolve(__dirname,"./src/utilities"),
       "@data": path.resolve(__dirname, "./src/data"),
       "@screens": path.resolve(__dirname, "./src/screens"),
-      "@api": path.resolve(__dirname, "./services/api")
+      "@services": path.resolve(__dirname, "./src/services")
     },
   },
 })
