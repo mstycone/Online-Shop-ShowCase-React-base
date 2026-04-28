@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import type { INavigationProfileProps } from "@interfaces/interfaces"
+import type { INavigationProfileCountProps } from "@interfaces/interfaces"
 
 
-export const NavigationProfil = ({countFavorite}: INavigationProfileProps) => {
+export const NavigationProfil = ({countFavorite}: INavigationProfileCountProps) => {
 
     return (
         <div className="dropdown dropdown-end">

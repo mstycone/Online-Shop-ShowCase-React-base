@@ -3,7 +3,7 @@ import type { IProduct } from "@interfaces/interfaces";
 import { isOnTheList } from "@utilities/fonctions";
 import { useState } from "react";
 
-export function useProductHandlers() {
+export function useCartHandlers() {
 
     //State pour la liste des produits dans le panier
     const [cartList, setCartList] = useState<IProduct[]>([]);
@@ -23,6 +23,14 @@ export function useProductHandlers() {
         ;
     
         setCartList(isCartList);
+    }
+
+    const [isCartPage, setIsCartPage ] = useState<boolean>(false);
+
+    const isCartPageActive = (b: boolean) => {
+        const weInCartPage = (isCartPage !== b) ? b : isCartPage ;
+
+        setIsCartPage(weInCartPage)
     }
     
     const confirmRemoveMessage = "Are you sure you want to remove this item from your cart?";
@@ -68,28 +76,13 @@ export function useProductHandlers() {
         
         setCartList(targetProduct);
     }
-    
-    //State pour ajouter et/ou retirer de la liste de favoris
-    const [favoriteList, setFavoriteList] = useState<IProduct[]>([]);
-    
-    const toggleFavorite = (product: IProduct) => {
-    
-        const isFavorite = (!isOnTheList(favoriteList, product)) 
-            ? [...favoriteList, product]
-            : (favoriteList.filter((item) => item.id !== product.id))
-        ;
-    
-        setFavoriteList(isFavorite);
-    }
 
     return {
         cartList,
-        setCartList,
+        isCartPage,
+        isCartPageActive,
         addToCartList,
         removeFromCartList,
-        decrementQuantity,
-        favoriteList,
-        setFavoriteList,
-        toggleFavorite
+        decrementQuantity
     }
 }

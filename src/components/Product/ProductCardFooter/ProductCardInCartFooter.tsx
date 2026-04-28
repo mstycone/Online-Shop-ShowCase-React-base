@@ -1,11 +1,13 @@
 import { FaRegSquarePlus, FaRegSquareMinus } from "react-icons/fa6";
 import { productPrice } from "@utilities/fonctions";
 import type { IProductProps } from "@interfaces/interfaces";
+import { useCart } from "@hooks";
 
 
-export const ProductCardInCartFooter = ({ product, addToCartList, decrementProductQuantity }: IProductProps) => {
+export const ProductCardInCartFooter = ({product}: IProductProps) => {
 
     const price = productPrice(product);
+    const { addToCartList, decrementQuantity } = useCart();
 
     return (
         <div>
@@ -22,7 +24,7 @@ export const ProductCardInCartFooter = ({ product, addToCartList, decrementProdu
                     </button>
                     <span className="text-white font-bold">Quantity</span>
                     <button
-                        onClick={() => decrementProductQuantity?.(product)}
+                        onClick={() => decrementQuantity?.(product)}
                         className="btn btn-ghost px-0 text-xl text-white active:scale-90"
                     >
                         <FaRegSquareMinus size={30} style={{ margin: 10 }} />
@@ -32,3 +34,5 @@ export const ProductCardInCartFooter = ({ product, addToCartList, decrementProdu
         </div>
     );
 };
+
+

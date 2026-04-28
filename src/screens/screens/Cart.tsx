@@ -1,32 +1,20 @@
-import type { IStandardPageProps } from '@interfaces/interfaces';
 import { PageTitle, ProductList } from '@components';
+import { useCart, useFavorite } from '@hooks';
 
 
-export const Cart = ({
-  addToCartList, 
-  toggleFavorite,
-  emptyListMessage,
-  isFavoritesPage,
-  productList, 
-  productDB,
-  pageTitle,
-  removeFromCartList,
-  decrementProductQuantity
-}: IStandardPageProps) => {
+export const Cart = () => {
 
+  const { favoriteList } = useFavorite();
+  const { cartList } = useCart();
 
   return (
     <div className="px-8 py-1">
-      <PageTitle pageTitle={pageTitle} cartList={productDB}/>
+      <PageTitle pageTitle="Your Cart" cartList={cartList}/>
       <ProductList
-        addToCartList={addToCartList}
-        toggleFavorite={toggleFavorite}
-        emptyListMessage={emptyListMessage}
-        isFavoritesPage={isFavoritesPage}
-        productList={productList}
-        productDB={productDB}
-        removeFromCartList={removeFromCartList}
-        decrementProductQuantity={decrementProductQuantity}
+        emptyListMessage="Your Cart is Empty"
+        isFavoritesPage={false}
+        productList={favoriteList}
+        productDB={cartList}
       />
     </div>
   )

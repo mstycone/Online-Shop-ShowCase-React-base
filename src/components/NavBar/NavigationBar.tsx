@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { NavigationCart, NavigationProfil } from "@components";
-import type { INavigationProps } from "@interfaces/interfaces";
+import { useFavorite } from "@hooks";
 
 
-export const NavigationBar = ({ cartList, removeFromCartList, countFavorite}: INavigationProps) => {
+export const NavigationBar = () => {
+
+    const { favoriteList } = useFavorite();
 
     return (
         <>
@@ -17,11 +19,8 @@ export const NavigationBar = ({ cartList, removeFromCartList, countFavorite}: IN
                         </Link>
                     </div>
                     <div className="flex gap-4">
-                        <NavigationCart 
-                            cartList={cartList} 
-                            removeFromCartList={removeFromCartList}
-                        />
-                        <NavigationProfil countFavorite={countFavorite}/>
+                        <NavigationCart/>
+                        <NavigationProfil countFavorite={favoriteList.length}/>
                     </div>
                 </div>
             </div>

@@ -1,26 +1,23 @@
 import { ProductCard } from '@components';
+import { useCart } from "@hooks";
 import type { IProductListProps } from '@interfaces/interfaces';
-import { BsBookmarkHeart } from 'react-icons/bs';
 import { totalPrice } from '@utilities/fonctions';
+import { BsBookmarkHeart } from 'react-icons/bs';
 
 
 export const ProductList = ({
-    addToCartList, 
-    toggleFavorite,
     emptyListMessage,
     isFavoritesPage,
     productList,
-    productDB,
-    decrementProductQuantity,
-    removeFromCartList
+    productDB
 }: IProductListProps) => {
+
+    const { isCartPage } = useCart();
 
     const mainProductList = (productDB) 
         ? productDB
         : productList
     ;
-
-    const isCartList = (removeFromCartList && decrementProductQuantity);
 
     const ifEmptyList = (isFavoritesPage)
         ? (
@@ -43,35 +40,13 @@ export const ProductList = ({
 
   return (
     <div>
-        { isCartList && displayTotalPrice }
+        { isCartPage && displayTotalPrice }
         <div className="flex flex-wrap justify-center gap-10 mb-40">
             {mainProductList.length > 0 
-                ? ( 
-                    mainProductList.map((product) => (
-                        (isCartList) 
-                            ? (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                    favoriteList={productList}
-                                    addToCartList={addToCartList}
-                                    addToFavoriteList={toggleFavorite}
-                                    removeFromCartList={removeFromCartList}
-                                    decrementProductQuantity={decrementProductQuantity}
-                                />
-                              )
-                            : (
-                                <ProductCard
-                                    key={product.id}
-                                    product={product}
-                                    favoriteList={productList}
-                                    addToCartList={addToCartList}
-                                    addToFavoriteList={toggleFavorite}
-                                />
-                              )
+                ? (mainProductList.map((product) => (
+                        <ProductCard key={product.id} product={product}/>
                     ))
-                  )  
-                : (ifEmptyList)
+                ) : (ifEmptyList)
             }
         </div>
     </div>

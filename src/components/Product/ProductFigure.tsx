@@ -1,22 +1,20 @@
 import { ProductImage } from "@components";
+import { useCart, useFavorite } from "@hooks";
 import type { IProductProps } from "@interfaces/interfaces";
+import { isOnTheList } from "@utilities/fonctions";
 import { FaTrashCan} from "react-icons/fa6";
 
-export const ProductFigure = ({ 
-    product, 
-    favoriteList,
-    addToFavoriteList, 
-    removeFromCartList,
-    decrementProductQuantity
-}: IProductProps) => {
+export const ProductFigure = ({product}: IProductProps) => {
 
-    const isFavorite = 
-        (!favoriteList.find((i) => i.id === product.id))
-            ? { fill: "none", strokeWidth: "2.5" }
-            :  { fill: "red" , strokeWidth: "0" }
+    const { toggleFavorite, favoriteList } = useFavorite();
+    const { removeFromCartList, isCartPage } = useCart();
+
+    const isFavorite = (!isOnTheList(favoriteList, product))
+        ? { fill: "none", strokeWidth: "2.5" }
+        :  { fill: "red" , strokeWidth: "0" }
     ;
 
-    const isCartList = (removeFromCartList && decrementProductQuantity)
+    const isItCartPage = (isCartPage && removeFromCartList);
 
     return (
         <figure className="h-80 w-full overflow-hidden bg-white relative">
@@ -25,7 +23,7 @@ export const ProductFigure = ({
                 className="w-full h-full object-contain p-7"
             />
             <button
-                onClick={() => addToFavoriteList(product)}
+                onClick={() => toggleFavorite(product)}
                 className="btn btn-circle btn-ghost tooltip tooltip-primary tooltip-left absolute top-2 right-2 bg-white backdrop-blur-sm border-none active:scale-90"
                 data-tip="Add to favorites"
             >
@@ -44,7 +42,7 @@ export const ProductFigure = ({
                     />
                 </svg>
             </button>
-            {isCartList && (
+            {isItCartPage && (
                 <div className=" inline-1 absolute top-14 right-10 items-center">
                     <span className="inline-block rounded-lg text-xl text-primary p-1.25 font-bold bg-white text-center">
                         x{product.quantity}

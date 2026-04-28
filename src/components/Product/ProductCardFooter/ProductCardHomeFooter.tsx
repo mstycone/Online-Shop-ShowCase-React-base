@@ -1,7 +1,10 @@
+import { useCart } from "@hooks";
 import type { IProductProps } from "@interfaces/interfaces";
 import { FaCartPlus } from "react-icons/fa6";
 
-export const ProductCardHomeFooter = ({ product, addToCartList }: IProductProps) => {
+export const ProductCardHomeFooter = ({product}: IProductProps) => {
+
+    const { addToCartList } = useCart();
 
     return (
         <div className="card-actions justify-end mt-3">

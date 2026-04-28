@@ -1,12 +1,14 @@
 import { productPrice } from "@utilities/fonctions";
 import { ProductImage } from "@components";
-import type { IProductCartListProps } from "@interfaces/interfaces";
+import type { IProductProps } from "@interfaces/interfaces";
 import { FaTrashCan } from "react-icons/fa6";
+import { useCart } from "@hooks";
 
 
-export const ProductCartList = ({ product, removeFromCartList }: IProductCartListProps ) => {
+export const ProductCartList = ({product}: IProductProps ) => {
 
     const price = productPrice(product);
+    const { removeFromCartList } = useCart();
     
     return (
         <li className="list-row relative flex justify-between my-1.5 items-center">
@@ -29,7 +31,7 @@ export const ProductCartList = ({ product, removeFromCartList }: IProductCartLis
             </div>
             <div className="bg-transparent">
                 <button 
-                    onClick={()=>removeFromCartList(product)} 
+                    onClick={() => removeFromCartList?.(product)} 
                     className="btn btn-square btn-ghost btn-sm hover:scale-120 active:scale-90"
                 >
                     <FaTrashCan size={15} className="text-white/30" />

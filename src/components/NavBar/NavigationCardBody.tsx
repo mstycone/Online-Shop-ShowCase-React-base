@@ -1,10 +1,12 @@
-import type { INavigationCartProps } from "@interfaces/interfaces";
 import { totalItem, totalPrice } from "@utilities/fonctions";
 import { ProductCartList } from "@components";
 import { Link } from "react-router-dom";
+import { useCart } from "@hooks";
 
 
-export const NavigationCardBody = ({ cartList, removeFromCartList }: INavigationCartProps) => {
+export const NavigationCardBody = () => {
+
+    const { cartList } = useCart()
 
     const totalItemInCart = totalItem(cartList);
     const total = totalPrice(cartList);
@@ -28,11 +30,7 @@ export const NavigationCardBody = ({ cartList, removeFromCartList }: INavigation
                             <ul className="menu menu-sm bg-base-100 rounded-box mt-2 w-full">
                                 {cartList.length > 0
                                     ? cartList.map((product) => (
-                                          <ProductCartList
-                                              key={product.id}
-                                              product={product}
-                                              removeFromCartList={removeFromCartList}
-                                          />
+                                          <ProductCartList key={product.id} product={product}/>
                                       ))
                                     : "Your cart is empty"}
                             </ul>

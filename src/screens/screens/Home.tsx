@@ -1,17 +1,11 @@
 import { ProductList, PageTitle } from '@components';
-import type { IProduct, IStandardPageProps } from '@interfaces/interfaces';
+import type { IProduct } from '@interfaces/interfaces';
 import { useEffect, useState } from 'react';
 import { getProducts } from '@services';
+import { useFavorite } from '@hooks';
 
 
-export const Home = ({
-    addToCartList, 
-    toggleFavorite,
-    emptyListMessage,
-    isFavoritesPage,
-    productList,
-    pageTitle
-}: IStandardPageProps) => {
+export const Home = () => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
 
@@ -24,15 +18,15 @@ export const Home = ({
     loadProducts();
   }, [])
 
+  const { favoriteList } = useFavorite();
+
   return (
     <div className="px-8 py-1">
-      <PageTitle pageTitle={pageTitle}/>
+      <PageTitle pageTitle="Home"/>
       <ProductList
-        addToCartList={addToCartList}
-        toggleFavorite={toggleFavorite}
-        emptyListMessage={emptyListMessage}
-        isFavoritesPage={isFavoritesPage}
-        productList={productList}
+        emptyListMessage="There is no products"
+        isFavoritesPage={false}
+        productList={favoriteList}
         productDB={products}
       />
     </div>

@@ -1,25 +1,18 @@
 import { PageTitle, ProductList } from '@components';
-import type { IStandardPageProps } from '@interfaces/interfaces';
+import { useFavorite } from '@hooks';
 
 
-export const Favorites = ({
-    addToCartList, 
-    toggleFavorite,
-    emptyListMessage,
-    isFavoritesPage,
-    productList,
-    pageTitle
-  }: IStandardPageProps) => {
+export const Favorites = () => {
+
+  const { favoriteList } = useFavorite();
 
   return (
     <div className="px-8 py-1">
-      <PageTitle pageTitle={pageTitle}/>
+      <PageTitle pageTitle="Your Favorites"/>
       <ProductList
-        addToCartList={addToCartList}
-        toggleFavorite={toggleFavorite}
-        emptyListMessage={emptyListMessage}
-        isFavoritesPage={isFavoritesPage}
-        productList={productList}
+        emptyListMessage="You have no Favorites Yet"
+        isFavoritesPage={true}
+        productList={favoriteList}
       />
     </div>
   );

@@ -1,10 +1,11 @@
-import type { INavigationCartProps } from "@interfaces/interfaces";
 import { NavigationCardBody } from "@components";
 import { totalItem } from "@utilities/fonctions";
 import { FaCartShopping } from "react-icons/fa6";
+import { useCart } from "@hooks";
 
-export const NavigationCart = ({ cartList, removeFromCartList }: INavigationCartProps) => {
-    
+export const NavigationCart = () => {
+
+    const { cartList } = useCart();
     const totalItemInCart = totalItem(cartList);
 
     return (
@@ -25,10 +26,7 @@ export const NavigationCart = ({ cartList, removeFromCartList }: INavigationCart
                 tabIndex={0}
                 className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-70 shadow"
             >
-                <NavigationCardBody 
-                    cartList={cartList} 
-                    removeFromCartList={removeFromCartList}
-                />
+                <NavigationCardBody/>
             </div>
         </div>
     );

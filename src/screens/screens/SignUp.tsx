@@ -1,14 +1,13 @@
 import { PageTitle } from "@components"
-import type { IPageTitleProps } from "@interfaces/interfaces"
 
 
-export const SignUp = ({pageTitle}: IPageTitleProps) => {
+export const SignUp = () => {
   return (
     <div className="px-8 py-1">
       <PageTitle
-        pageTitle={pageTitle}
+        pageTitle="Sign Up"
       />
-      <span> Welcome to the {pageTitle} page</span>
+      <span> Welcome to the Sign Up page</span>
     </div>
   )
 }
